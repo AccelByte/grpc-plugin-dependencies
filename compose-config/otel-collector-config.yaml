@@ -11,10 +11,6 @@ receivers:
             - targets: ['host.docker.internal:8080']
 
 exporters:
-  otlp/graphana-cloud:
-    endpoint: "tempo-us-central1.grafana.net:443"
-    headers:
-      authorization: Basic ${GRAPHANA_CLOUD_TRACES_BASIC_AUTH}
   otlp/graphana-local:
     endpoint: tempo:4317
     tls:
@@ -55,7 +51,7 @@ service:
     traces:
       receivers: [zipkin]
       processors: [batch,tail_sampling]
-      exporters: [otlp/graphana-local,otlp/graphana-cloud]
+      exporters: [otlp/graphana-local]
     metrics:
       receivers: [prometheus]
       processors: [batch]

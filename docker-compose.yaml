@@ -24,11 +24,6 @@ services:
     command: ["--config=/etc/otel-collector-config.yaml"]
     depends_on:
       - tempo
-    environment:
-      - GRAPHANA_CLOUD_TRACES_BASIC_AUTH
-      - GRAPHANA_CLOUD_METRICS_BASIC_AUTH
-      - GRAPHANA_CLOUD_TRACES_SAMPLING_PERCENTAGE
-      - GRAPHANA_CLOUD_TRACES_SAMPLING_STATUS_CODES
     volumes:
       - ./compose-config/otel-collector-config.yaml:/etc/otel-collector-config.yaml
     ports:
