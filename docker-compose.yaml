@@ -29,7 +29,7 @@ services:
       - "24224:24224/udp"
 
   fluentd-loki:
-    image: grafana/fluent-plugin-loki:master  # based on 1.9 and not having the updated http plugin for json-array
+    image: grafana/fluent-plugin-loki:master    # based on 1.9 and not having the updated http plugin for json-array
     command: ["-v"]
     volumes:
       - ./compose-config/fluent-loki.conf:/fluentd/etc/fluent.conf
@@ -51,7 +51,7 @@ services:
       - host.docker.internal:host-gateway
 
   loki:
-    image: grafana/loki
+    image: grafana/loki:main-489898f
     ports:
       - "3100:3100"
     volumes:
@@ -73,7 +73,7 @@ services:
       - host.docker.internal:host-gateway
 
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v2.37.2
     command:
       - --config.file=/etc/prometheus.yaml
       - --web.enable-remote-write-receiver
@@ -86,7 +86,7 @@ services:
       - host.docker.internal:host-gateway
 
   tempo:
-    image: grafana/tempo:latest
+    image: grafana/tempo:main-16fc036
     command: [ "-config.file=/etc/tempo.yaml" ]
     volumes:
       - ./compose-config/tempo-local.yaml:/etc/tempo.yaml
