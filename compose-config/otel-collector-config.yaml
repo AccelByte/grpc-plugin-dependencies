@@ -11,10 +11,6 @@ receivers:
             - targets: ['host.docker.internal:8080']
 
 exporters:
-  jaeger:
-    endpoint: jaeger:14250
-    tls:
-      insecure: true
   otlp/graphana-cloud:
     endpoint: "tempo-us-central1.grafana.net:443"
     headers:
@@ -59,7 +55,7 @@ service:
     traces:
       receivers: [zipkin]
       processors: [batch,tail_sampling]
-      exporters: [otlp/graphana-local,otlp/graphana-cloud,jaeger]
+      exporters: [otlp/graphana-local,otlp/graphana-cloud]
     metrics:
       receivers: [prometheus]
       processors: [batch]
