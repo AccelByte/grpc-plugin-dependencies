@@ -92,10 +92,6 @@ services:
   fluentd-loki:
     image: grafana/fluent-plugin-loki:master  # based on 1.9 and not having the updated http plugin for json-array
     command: ["-v"]
-    environment:
-      - LOKI_URL
-      - LOKI_USERNAME
-      - LOKI_PASSWORD
     volumes:
       - ./compose-config/fluent-loki.conf:/fluentd/etc/fluent.conf
     ports:
