@@ -41,7 +41,7 @@ processors:
           threshold_ms: 5000
       - type: probabilistic
         probabilistic:
-          sampling_percentage: ${GRAPHANA_CLOUD_TRACES_SAMPLING_PERCENTAGE}
+          sampling_percentage: ${GRAPHANA_TRACES_SAMPLING_PERCENTAGE}
 
 service:
   telemetry:
