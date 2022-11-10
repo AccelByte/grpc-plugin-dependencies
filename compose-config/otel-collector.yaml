@@ -11,14 +11,6 @@ receivers:
             - targets: ['host.docker.internal:8080']
 
 exporters:
-  jaeger:
-    endpoint: jaeger:14250
-    tls:
-      insecure: true
-  otlp/graphana-cloud:
-    endpoint: "tempo-us-central1.grafana.net:443"
-    headers:
-      authorization: Basic ${GRAPHANA_CLOUD_TRACES_BASIC_AUTH}
   otlp/graphana-local:
     endpoint: tempo:4317
     tls:
@@ -49,7 +41,7 @@ processors:
           threshold_ms: 5000
       - type: probabilistic
         probabilistic:
-          sampling_percentage: ${GRAPHANA_CLOUD_TRACES_SAMPLING_PERCENTAGE}
+          sampling_percentage: ${GRAPHANA_TRACES_SAMPLING_PERCENTAGE}
 
 service:
   telemetry:
@@ -59,7 +51,7 @@ service:
     traces:
       receivers: [zipkin]
       processors: [batch,tail_sampling]
-      exporters: [otlp/graphana-local,otlp/graphana-cloud,jaeger]
+      exporters: [otlp/graphana-local]
     metrics:
       receivers: [prometheus]
       processors: [batch]

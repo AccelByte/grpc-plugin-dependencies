@@ -13,11 +13,19 @@ Services required to run Plugin Arch gRPC Server and Client locally.
 
 ## Prerequisites
 
-- docker
-- docker-compose
+- docker compose
+
+## Setup
+
+1. Create a docker compose `.env` file based on `.env.template` file. 
+2. Fill in the required environment variables in `.env` file.
+3. Put `server_cert.key` file in `compose-config/certs` folder.
 
 ## Usage
 
+To start the services, run the following command.
+
+
 ```
-docker-compose up       # Use default docker-compose.yml
+docker-compose up
 ```

@@ -48,3 +48,5 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Docker Compose .env file
+.env
