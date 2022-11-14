@@ -19,15 +19,6 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
 
-  fluentd:
-    image: fluent/fluentd:v1.15
-    command: ["-v"]
-    volumes:
-      - ./compose-config/fluent.conf:/fluentd/etc/fluent.conf
-    ports:
-      - "24224:24224"
-      - "24224:24224/udp"
-
   fluentd-loki:
     image: grafana/fluent-plugin-loki:master    # based on 1.9 and not having the updated http plugin for json-array
     command: ["-v"]
@@ -60,6 +51,18 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
 
+  nginx:
+    image: nginx:1.23.2
+    ports:
+      - "10001:10001"
+    volumes:
+      - ./compose-config/nginx.conf:/etc/nginx/nginx.conf
+      - ./compose-config/certs/client_cert.pem:/home/certs/client_cert.pem
+      - ./compose-config/certs/client_cert.key:/home/certs/client_cert.key
+      - ./compose-config/certs/root_CA_cert.pem:/home/certs/root_CA_cert.pem
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
   otel-collector:
     image: otel/opentelemetry-collector-contrib:0.58.0
     command: ["--config=/etc/otel-collector-config.yaml"]
@@ -67,6 +70,8 @@ services:
       - tempo
     volumes:
       - ./compose-config/otel-collector.yaml:/etc/otel-collector-config.yaml
+    environment:
+      - GRAPHANA_TRACES_SAMPLING_PERCENTAGE
     ports:
       - "9411:9411"   # zipkin receiver
     extra_hosts:
