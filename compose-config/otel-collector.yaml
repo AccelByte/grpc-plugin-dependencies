@@ -3,8 +3,8 @@ receivers:
   prometheus:
     config:
       scrape_configs:
-        - job_name: 'CustomMatchMakingFunctionGRPCJava-metrics'
-          metrics_path: '/actuator/prometheus'
+        - job_name: 'plugin-arch-grpc-server-metrics'
+          metrics_path: '/metrics'
           scrape_interval: 60s
           scrape_timeout: 10s
           static_configs:
@@ -12,7 +12,7 @@ receivers:
 
 exporters:
   otlp/graphana-local:
-    endpoint: tempo:4317
+    endpoint: 'tempo:4317'
     tls:
       insecure: true
   prometheusremotewrite:
