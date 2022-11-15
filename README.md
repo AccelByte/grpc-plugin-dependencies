@@ -1,6 +1,8 @@
 # plugin-arch-grpc-dependencies
 
-Services required to run Plugin Arch gRPC Server and Client locally.
+> :warning: **If you are new to AccelByte Cloud Service Customization gRPC Plugin Architecture**: Start reading from [OVERVIEW.md](OVERVIEW.md) to get the full context.
+
+Dependency services required by `gRPC server` and `gRPC client` for **reliability**, **scalability**, and **observability**. This repository contains docker compose to facilitate local development and testing.
 
 - nginx
 - envoy
@@ -13,6 +15,7 @@ Services required to run Plugin Arch gRPC Server and Client locally.
 
 ## Prerequisites
 
+- docker
 - docker compose
 
 ## Setup
@@ -21,7 +24,7 @@ Services required to run Plugin Arch gRPC Server and Client locally.
 2. Fill in the required environment variables in `.env` file.
 3. Put `server_cert.key` and `client_cert.key` file in `compose-config/certs` folder.
 
-## Usage
+## Running
 
 To start the services, run the following command.
 
