@@ -13,6 +13,33 @@ Dependency services required by `gRPC server` and `gRPC client` for **reliabilit
 - opentelemetry-collector
 - fluentd-loki
 
+```mermaid
+flowchart LR
+	EN[Envoy Proxy]
+    NX[Nginx]
+	OT[Open Telemetry Collector]
+    TM[Tempo]
+    LK[Loki]
+    PM[Prometheus]
+    GF[Grafana]	
+    FL[Fluentd-Loki]
+    EX[External Entities]
+	subgraph 	
+        EN -->|trace\n9411| OT
+        OT -->|otlp\n4317| TM
+        OT -->|metric\n9090| PM
+        FL -->|log\n3100| LK
+        GF -->|trace data\n3200| TM
+        GF -->|metric data\n9090| PM
+        GF -->|log data\n3100| LK
+    end
+    EX -->|log\n3100| LK
+    EX -->|log\n24225| FL
+    EX -->|trace\n9411| OT
+    OT -->|metric scraping\n8080| EX
+    NX -->|secure grpc\n10000| EN
+```
+
 ## Prerequisites
 
 - docker
