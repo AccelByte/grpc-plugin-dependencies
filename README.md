@@ -58,3 +58,13 @@ To start the services, run the following command.
 ```
 docker-compose up
 ```
+
+## Running with Ngrok
+
+1. Sign-in/Sign-up to [ngrok](https://ngrok.com/). Get your auth token in ngrok Dashboard.
+2. Open `.env` file and  set `NGROK_AUTHTOKEN` with your ngrok auth token.
+3. You can set `NGROK_TARGET_PORT` to 10000 to use envoy mTLS.
+4. Start the services with following command.
+```
+docker-compose -f docker-compose-ngrok.yaml up
+```
