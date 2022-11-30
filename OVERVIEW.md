@@ -2,6 +2,19 @@
 
 ## Overview
 
+```mermaid\
+flowchart LR
+   subgraph AB Cloud Service
+   CL[gRPC Client]
+   end
+   subgraph External Hosting
+   SV[gRPC Server]
+   DS[Dependency Services]
+   CL --> DS
+   end
+   DS --> SV
+```
+
 AccelByte Cloud Service Customization gRPC Plugin Architecture consists of three (3) components.
 
 - `gRPC server`
@@ -34,7 +47,7 @@ See the following repositories.
 
 ### Dependency Services
 
-Dependency services required by `gRPC server` and `gRPC client` for **reliability**, **scalability**, and **observability**. The docker-compose for this to facilitate local development and testing is available.
+Dependency services required by `gRPC server` and `gRPC client` for **security**, **reliability**, **scalability**, and **observability** in real environment. The docker-compose for this to facilitate local development and testing is available.
 
 See `plugin-arch-grpc-dependencies` repository.
 

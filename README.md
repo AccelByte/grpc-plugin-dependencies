@@ -9,9 +9,9 @@ flowchart LR
 	EN[Envoy]
     NX[Nginx]
 	OT[Open Telemetry Collector]
-    TM[Tempo]
-    LK[Loki]
-    PM[Prometheus]
+    TM[(Tempo)]
+    LK[(Loki)]
+    PM[(Prometheus)]
     GF[Grafana]	
     FL[Fluentd-Loki]
 	subgraph Dependency Services
