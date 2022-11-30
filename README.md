@@ -2,7 +2,40 @@
 
 > :warning: **If you are new to AccelByte Cloud Service Customization gRPC Plugin Architecture**: Start reading from [OVERVIEW.md](OVERVIEW.md) to get the full context.
 
-Dependency services required by `gRPC server` and `gRPC client` for **reliability**, **scalability**, and **observability**. This repository contains docker compose to facilitate local development and testing.
+```mermaid
+flowchart LR
+    CL[gRPC Client]
+    SV[gRPC Server]
+	EN[Envoy]
+    NX[Nginx]
+	OT[Open Telemetry Collector]
+    TM[Tempo]
+    LK[Loki]
+    PM[Prometheus]
+    GF[Grafana]	
+    FL[Fluentd-Loki]
+	subgraph Dependency Services
+        NX -->|secure grpc\n10000| EN
+        EN -.->|traces\n9411| OT
+        OT -.->|traces\n4317| TM
+        OT -.->|metrics\n9090| PM
+        FL -.->|logs\n3100| LK
+        TM -.->|traces\n3200| GF
+        PM -.->|metrics\n9090| GF
+        LK -.->|logs\n3100| GF
+    end
+    CL -->|grpc\n10001| NX
+    CL -.->|traces\n9411| OT
+    CL -.->|logs\n3100| LK
+    EN -->|grpc\n6565| SV
+    SV -.->|metrics\n8080| OT
+    SV -.->|traces\n9411| OT
+    SV -.->|logs\n24225| FL
+```
+
+While the `gRPC server` and the `gRPC client` are able communicate directly, additional services are necessary to provide **security**, **reliability**, **scalability**, and **observability** in the real environment. In this architecture, we call those services as `Dependency Services`.
+
+This repository contains the docker compose of the `Dependency Services` for local development and testing purposes. It consists of the following services.
 
 - nginx
 - envoy
@@ -12,33 +45,6 @@ Dependency services required by `gRPC server` and `gRPC client` for **reliabilit
 - prometeus
 - opentelemetry-collector
 - fluentd-loki
-
-```mermaid
-flowchart LR
-	EN[Envoy Proxy]
-    NX[Nginx]
-	OT[Open Telemetry Collector]
-    TM[Tempo]
-    LK[Loki]
-    PM[Prometheus]
-    GF[Grafana]	
-    FL[Fluentd-Loki]
-    EX[External Entities]
-	subgraph 	
-        EN -->|trace\n9411| OT
-        OT -->|otlp\n4317| TM
-        OT -->|metric\n9090| PM
-        FL -->|log\n3100| LK
-        GF -->|trace data\n3200| TM
-        GF -->|metric data\n9090| PM
-        GF -->|log data\n3100| LK
-    end
-    EX -->|log\n3100| LK
-    EX -->|log\n24225| FL
-    EX -->|trace\n9411| OT
-    OT -->|metric scraping\n8080| EX
-    NX -->|secure grpc\n10000| EN
-```
 
 ## Prerequisites
 
@@ -59,12 +65,23 @@ To start the services, run the following command.
 docker-compose up
 ```
 
+## Usage
+
+## Accessing Grafana Dashboard
+
+The Grafana dashboard can be accessed at http://localhost:3000.
+
 ## Running with Ngrok
 
-1. Sign-in/Sign-up to [ngrok](https://ngrok.com/). Get your auth token in ngrok Dashboard.
+To allow `gRPC Client` in AccelByte Cloud to access `gRPC Server` in local development environment without requiring a public IP address, we can use [ngrok](https://ngrok.com/).
+
+1. Sign-in/sign-up to [ngrok](https://ngrok.com/). Get your auth token in ngrok Dashboard.
+
 2. Open `.env` file and  set `NGROK_AUTHTOKEN` with your ngrok auth token.
-3. You can set `NGROK_TARGET_PORT` to 10000 to use envoy mTLS.
+
+3. You can set `NGROK_TARGET_PORT` to 10000 to use Envoy mTLS.
+
 4. Start the services with following command.
-```
-docker-compose -f docker-compose-ngrok.yaml up
-```
+    ```
+    docker-compose -f docker-compose-ngrok.yaml up
+    ```
