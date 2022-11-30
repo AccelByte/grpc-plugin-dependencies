@@ -60,30 +60,7 @@ See `plugin-arch-grpc-dependencies` repository.
 
    a. Clone `plugin-arch-grpc-client-java` repository. 
 
-   b. Follow the `README.md` inside to setup, build, and run it. 
-   
-4. Use `cURL` to try out the `gRPC server` functions via `gRPC client`. 
+   b. Follow the `README.md` inside to setup, build, and run it.
 
-    a. getStatCodes
+   c. Try it out! See the instruction in `README.md`.
 
-    ```
-    curl http://localhost:8081/getStatCodes
-    ```
-
-    b. validateTicket
-
-    ```
-    curl -X POST http://localhost:8081/validateTicket
-    ```
-
-    c. makeMatches
-
-    ```
-    curl -X POST http://localhost:8081/makeMatches -H 'Content-Type: application/json' -d '[{"userId":"111"},{"userId": "222"},{"userId": "333"}]'
-    ```
-
-    d. endMakeMatches
-
-    ```
-    curl -X POST http://localhost:8081/endMakeMatches
-    ```
