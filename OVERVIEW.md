@@ -2,6 +2,19 @@
 
 ## Overview
 
+```mermaid\
+flowchart LR
+   subgraph AB Cloud Service
+   CL[gRPC Client]
+   end
+   subgraph External Hosting
+   SV[gRPC Server]
+   DS[Dependency Services]
+   CL --> DS
+   end
+   DS --> SV
+```
+
 AccelByte Cloud Service Customization gRPC Plugin Architecture consists of three (3) components.
 
 - `gRPC server`
@@ -34,7 +47,7 @@ See the following repositories.
 
 ### Dependency Services
 
-Dependency services required by `gRPC server` and `gRPC client` for **reliability**, **scalability**, and **observability**. The docker-compose for this to facilitate local development and testing is available.
+Dependency services required by `gRPC server` and `gRPC client` for **security**, **reliability**, **scalability**, and **observability** in real environment. The docker-compose for this to facilitate local development and testing is available.
 
 See `plugin-arch-grpc-dependencies` repository.
 
@@ -60,30 +73,7 @@ See `plugin-arch-grpc-dependencies` repository.
 
    a. Clone `plugin-arch-grpc-client-java` repository. 
 
-   b. Follow the `README.md` inside to setup, build, and run it. 
-   
-4. Use `cURL` to try out the `gRPC server` functions via `gRPC client`. 
+   b. Follow the `README.md` inside to setup, build, and run it.
 
-    a. getStatCodes
+   c. Try it out! See the instruction in `README.md`.
 
-    ```
-    curl http://localhost:8081/getStatCodes
-    ```
-
-    b. validateTicket
-
-    ```
-    curl -X POST http://localhost:8081/validateTicket
-    ```
-
-    c. makeMatches
-
-    ```
-    curl -X POST http://localhost:8081/makeMatches -H 'Content-Type: application/json' -d '[{"userId":"111"},{"userId": "222"},{"userId": "333"}]'
-    ```
-
-    d. endMakeMatches
-
-    ```
-    curl -X POST http://localhost:8081/endMakeMatches
-    ```
