@@ -10,9 +10,9 @@ flowchart LR
    subgraph External Hosting
    SV[gRPC Server]
    DS[Dependency Services]
-   CL --> DS
+   CL --- DS
    end
-   DS --> SV
+   DS --- SV
 ```
 
 AccelByte Cloud Service Customization gRPC Plugin Architecture consists of three (3) components.
