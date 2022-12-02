@@ -10,9 +10,9 @@ flowchart LR
    subgraph External Hosting
    SV[gRPC Server]
    DS[Dependency Services]
-   CL --> DS
+   CL --- DS
    end
-   DS --> SV
+   DS --- SV
 ```
 
 AccelByte Cloud Service Customization gRPC Plugin Architecture consists of three (3) components.
@@ -38,7 +38,7 @@ See the following repositories.
 
 The corresponding gRPC client to call gRPC server created by customers. It is to be implemented in AccelByte Cloud service for each feature which can be customized.  
 
-Sample projects for this in Go and Java are available. It is implemented as a simple HTTP service which can call `gRPC server` functions. It should be possible for a gRPC client in one language to communicate with gRPC server in a different language.
+Sample projects for this in Go and Java are available. It is possible for a gRPC client in one language to communicate with gRPC server in a different language.
 
 See the following repositories.
 
@@ -47,9 +47,11 @@ See the following repositories.
 
 ### Dependency Services
 
-Dependency services required by `gRPC server` and `gRPC client` for **security**, **reliability**, **scalability**, and **observability** in real environment. The docker-compose for this to facilitate local development and testing is available.
+While the `gRPC server` and the `gRPC client` are able communicate directly, additional services are necessary to provide **security**, **reliability**, **scalability**, and **observability**. These dependency services are packaged as a docker compose file.
 
 See `plugin-arch-grpc-dependencies` repository.
+
+> :warning: **It is important to note:** the dependency services docker compose is provided as an example for local development setup only.
 
 ## How to Run The Sample Projects
 

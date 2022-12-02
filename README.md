@@ -15,7 +15,7 @@ flowchart LR
     GF[Grafana]	
     FL[Fluentd-Loki]
 	subgraph Dependency Services
-        NX -->|secure grpc\n10000| EN
+        NX ---|secure grpc\n10000| EN
         EN -.->|traces\n9411| OT
         OT -.->|traces\n4317| TM
         OT -.->|metrics\n9090| PM
@@ -24,16 +24,16 @@ flowchart LR
         PM -.->|metrics\n9090| GF
         LK -.->|logs\n3100| GF
     end
-    CL -->|grpc\n10001| NX
+    CL ---|grpc\n10001| NX
     CL -.->|traces\n9411| OT
     CL -.->|logs\n3100| LK
-    EN -->|grpc\n6565| SV
+    EN ---|grpc\n6565| SV
     SV -.->|metrics\n8080| OT
     SV -.->|traces\n9411| OT
     SV -.->|logs\n24225| FL
 ```
 
-While the `gRPC server` and the `gRPC client` are able communicate directly, additional services are necessary to provide **security**, **reliability**, **scalability**, and **observability** in the real environment. In this architecture, we call those services as `Dependency Services`.
+The `gRPC server` and the `gRPC client` can actually communicate directly. However, additional services are necessary to provide **security**, **reliability**, **scalability**, and **observability**. In this architecture, we call those services as `Dependency Services`.
 
 This repository contains the docker compose of the `Dependency Services` for local development and testing purposes. It consists of the following services.
 
@@ -45,6 +45,8 @@ This repository contains the docker compose of the `Dependency Services` for loc
 - prometeus
 - opentelemetry-collector
 - fluentd-loki
+
+> :warning: **It is important to note:** the dependency services docker compose is provided as an example for local development setup only.
 
 ## Prerequisites
 
