@@ -33,7 +33,7 @@ flowchart LR
     SV -.->|logs\n24225| FL
 ```
 
-While the `gRPC server` and the `gRPC client` are able communicate directly, additional services are necessary to provide **security**, **reliability**, **scalability**, and **observability** in the real environment. In this architecture, we call those services as `Dependency Services`.
+The `gRPC server` and the `gRPC client` can actually communicate directly. However, additional services are necessary to provide **security**, **reliability**, **scalability**, and **observability**. In this architecture, we call those services as `Dependency Services`.
 
 This repository contains the docker compose of the `Dependency Services` for local development and testing purposes. It consists of the following services.
 
@@ -45,6 +45,8 @@ This repository contains the docker compose of the `Dependency Services` for loc
 - prometeus
 - opentelemetry-collector
 - fluentd-loki
+
+> :warning: **It is important to note:** the dependency services docker compose is provided as an example for local development setup only.
 
 ## Prerequisites
 
