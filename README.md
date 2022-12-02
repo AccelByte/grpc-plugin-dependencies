@@ -15,7 +15,7 @@ flowchart LR
     GF[Grafana]	
     FL[Fluentd-Loki]
 	subgraph Dependency Services
-        NX -->|secure grpc\n10000| EN
+        NX ---|secure grpc\n10000| EN
         EN -.->|traces\n9411| OT
         OT -.->|traces\n4317| TM
         OT -.->|metrics\n9090| PM
@@ -24,10 +24,10 @@ flowchart LR
         PM -.->|metrics\n9090| GF
         LK -.->|logs\n3100| GF
     end
-    CL -->|grpc\n10001| NX
+    CL ---|grpc\n10001| NX
     CL -.->|traces\n9411| OT
     CL -.->|logs\n3100| LK
-    EN -->|grpc\n6565| SV
+    EN ---|grpc\n6565| SV
     SV -.->|metrics\n8080| OT
     SV -.->|traces\n9411| OT
     SV -.->|logs\n24225| FL
