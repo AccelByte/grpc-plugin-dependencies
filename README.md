@@ -93,11 +93,11 @@ To allow `gRPC Client` in AccelByte Cloud to access `gRPC Server` in local devel
 For mTLS, CA-signed certificate is required. To generate those certificates, run the following command.
 
 ```
-./generate-cert.sh
+make certificate
 ```
 
 By default, certificates will be generated inside `compose-config/certs` directory. To generate certificates to different directory, run the following command.
 
 ```
-./generate-cert.sh <path-to-directory>
+make certificate CERT_TARGET_DIR=<path-to-directory>
 ```
