@@ -87,3 +87,17 @@ To allow `gRPC Client` in AccelByte Cloud to access `gRPC Server` in local devel
     ```
     docker-compose -f docker-compose-ngrok.yaml up
     ```
+
+## Generate Certificates
+
+For mTLS, CA-signed certificate is required. To generate those certificates, run the following command.
+
+```
+./generate-cert.sh
+```
+
+By default, certificates will be generated inside `compose-config/certs` directory. To generate certificates to different directory, run the following command.
+
+```
+./generate-cert.sh <path-to-directory>
+```
