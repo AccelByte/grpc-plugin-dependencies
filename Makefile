@@ -7,4 +7,5 @@ SHELL := /bin/bash
 CERTS_DIR := compose-config/certs
 
 certificate:
-	docker run --rm -v "$(PWD)":/data nginx:latest /data/generate-cert.sh "/data/$(CERTS_DIR)"
+	docker run --rm -u $$(id -u):$$(id -g) -v "$(PWD)":/data nginx:latest \
+			/data/generate-cert.sh "/data/$(CERTS_DIR)"
