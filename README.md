@@ -78,17 +78,14 @@ docker-compose up
 
 Grafana can be accessed at http://localhost:3000.
 
-## Running with Ngrok
+## Testing with AccelByte Cloud
 
-For testing purpose, to allow `gRPC client` in AccelByte Cloud to access `gRPC server` in local development environment without requiring a public IP address, we can use [ngrok](https://ngrok.com/).
+To allow `gRPC client` in AccelByte Cloud to access `gRPC server` in local development environment without requiring a public IP address, we can use [ngrok](https://ngrok.com/).
 
-1. Sign-in/sign-up to [ngrok](https://ngrok.com/). Get your auth token in ngrok Dashboard.
+1. Sign-in/sign-up to [ngrok](https://ngrok.com/) and et your auth token in `ngrok` dashboard.
 
-2. Open `.env` file and  set `NGROK_AUTHTOKEN` with your ngrok auth token.
+2. Run the following command to expose `gRPC server` Envoy proxy port in local development environment to the internet.
 
-3. You can set `NGROK_TARGET_PORT` to 10000 to target `gRPC server` Envoy proxy.
-
-4. Start the services with following command.
-    ```
-    docker-compose -f docker-compose-ngrok.yaml up
-    ```
+   ```
+   make ngrok NGROK_AUTHTOKEN=xxxxxxxxxxx
+   ```
