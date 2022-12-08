@@ -71,14 +71,14 @@ static_resources:
               common_tls_context:
                 validation_context:
                   trusted_ca:
-                    filename: /home/certs/root_CA_cert.pem
+                    filename: /home/certs/rootCA.pem
                 alpn_protocols:
                   - h2,http/1.1
                 tls_certificates:
                   - certificate_chain:
-                      filename: /home/certs/server_cert.pem
+                      filename: /home/certs/server.pem
                     private_key:
-                      filename: /home/certs/server_cert.key
+                      filename: /home/certs/server.key
 
   clusters:
     - name: springboot_grpc_local

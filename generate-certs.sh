@@ -9,16 +9,16 @@ CERT_ROOT_CN="AccelByte Test Root CA"
 CERT_CA_DAYS=3650
 CERT_DAYS=365
 
-CERT_CA_KEY_FILE="root_CA.key"
-CERT_CA_PEM_FILE="root_CA_cert.pem"
+CERT_CA_KEY_FILE="rootCA.key"
+CERT_CA_PEM_FILE="rootCA.pem"
 
-CERT_SV_KEY_FILE="server_cert.key"
-CERT_SV_CSR_FILE="server_cert.csr"
-CERT_SV_PEM_FILE="server_cert.pem"
+CERT_SV_KEY_FILE="server.key"
+CERT_SV_CSR_FILE="server.csr"
+CERT_SV_PEM_FILE="server.pem"
 
-CERT_CL_KEY_FILE="client_cert.key"
-CERT_CL_CSR_FILE="client_cert.csr"
-CERT_CL_PEM_FILE="client_cert.pem"
+CERT_CL_KEY_FILE="client.key"
+CERT_CL_CSR_FILE="client.csr"
+CERT_CL_PEM_FILE="client.pem"
 
 CERT_DIR=compose-config/certs
 if [ $# -eq 1 ]; then
@@ -28,7 +28,7 @@ fi
 echo -e "Certificate directory: $CERT_DIR\n"
 mkdir -p "$CERT_DIR"
 
-# openssl genrsa -out "$CERT_DIR/client_cert.key" 2048
+# openssl genrsa -out "$CERT_DIR/client.key" 2048
 
 echo -e -n "Create CA key..."
 openssl genrsa -out "$CERT_DIR/$CERT_CA_KEY_FILE" 4096 2> /dev/null

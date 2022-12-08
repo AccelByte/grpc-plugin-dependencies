@@ -8,4 +8,4 @@ CERTS_DIR := compose-config/certs
 
 certificate:
 	docker run --rm -u $$(id -u):$$(id -g) -v "$(PWD)":/data nginx:1.23.2 \
-			/data/generate-cert.sh "/data/$(CERTS_DIR)"
+			/data/generate-certs.sh "/data/$(CERTS_DIR)"
