@@ -4,9 +4,7 @@
 
 SHELL := /bin/bash
 
-ifndef CERT_TARGET_DIR
-override CERT_TARGET_DIR = compose-config/certs
-endif
+CERTS_DIR := compose-config/certs
 
 certificate:
-	docker run --rm -v ${PWD}:/workspace nginx:latest /workspace/generate-cert.sh "/workspace/$(CERT_TARGET_DIR)"
+	docker run --rm -v "$(PWD)":/data nginx:latest /data/generate-cert.sh "/data/$(CERTS_DIR)"
