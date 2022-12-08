@@ -13,9 +13,18 @@ services:
       - "9901:9901"
     volumes:
       - ./compose-config/envoy.yaml:/etc/envoy/envoy.yaml
-      - ./compose-config/certs/server.pem:/home/certs/server.pem
-      - ./compose-config/certs/server.key:/home/certs/server.key
-      - ./compose-config/certs/rootCA.pem:/home/certs/rootCA.pem
+      - type: bind
+        source: ./compose-config/certs/server.pem
+        target: /home/certs/server.pem
+        read_only: true
+      - type: bind
+        source: ./compose-config/certs/server.key
+        target: /home/certs/server.key
+        read_only: true
+      - type: bind
+        source: ./compose-config/certs/rootCA.pem
+        target: /home/certs/rootCA.pem
+        read_only: true
     extra_hosts:
       - host.docker.internal:host-gateway
 
@@ -57,9 +66,18 @@ services:
       - "10001:10001"
     volumes:
       - ./compose-config/nginx.conf:/etc/nginx/nginx.conf
-      - ./compose-config/certs/client.pem:/home/certs/client.pem
-      - ./compose-config/certs/client.key:/home/certs/client.key
-      - ./compose-config/certs/rootCA.pem:/home/certs/rootCA.pem
+      - type: bind
+        source: ./compose-config/certs/client.pem
+        target: /home/certs/client.pem
+        read_only: true
+      - type: bind
+        source: ./compose-config/certs/client.key
+        target: /home/certs/client.key
+        read_only: true
+      - type: bind
+        source: ./compose-config/certs/rootCA.pem
+        target: /home/certs/rootCA.pem
+        read_only: true
     extra_hosts:
       - host.docker.internal:host-gateway
 
