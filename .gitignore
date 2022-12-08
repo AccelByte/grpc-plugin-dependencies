@@ -51,5 +51,5 @@ Thumbs.db
 # Docker Compose .env file
 .env
 
-# Certificate serial
-compose-config/certs/*.srl
+# mTLS certificates
+compose-config/certs/
