@@ -33,9 +33,9 @@ flowchart LR
     SV -.->|logs\n24225| FL
 ```
 
-The `gRPC server` and the `gRPC client` can actually communicate directly. However, additional services are necessary to provide **security**, **reliability**, **scalability**, and **observability**. In this architecture, we call those services as `Dependency Services`.
+The `gRPC server` and the `gRPC client` can actually communicate directly. However, additional services are necessary to provide **security**, **reliability**, **scalability**, and **observability**. In this architecture, we call those services as `dependency services`.
 
-This repository contains the docker compose of the `Dependency Services` for local development and testing purposes. It consists of the following services.
+This repository contains the docker compose of the `dependency dervices` for local development and testing purposes. It consists of the following services.
 
 - nginx
 - envoy
@@ -55,9 +55,16 @@ This repository contains the docker compose of the `Dependency Services` for loc
 
 ## Setup
 
-1. Create a docker compose `.env` file based on `.env.template` file. 
-2. Fill in the required environment variables in `.env` file.
-3. Put `server_cert.key` and `client_cert.key` file in `compose-config/certs` folder.
+1. Run the following command to generate self-signed certificates required for secure gRPC (mTLS).
+
+   ```
+   make certificate
+   ```
+
+   You can find the generated certificates in `compose-config/certs` folder.
+
+2. Create a docker compose `.env` file based on `.env.template` file. 
+3. Fill in the required environment variables in `.env` file.
 
 ## Running
 
@@ -67,37 +74,18 @@ To start the services, run the following command.
 docker-compose up
 ```
 
-## Usage
+## Accessing Grafana
 
-## Accessing Grafana Dashboard
+Grafana can be accessed at http://localhost:3000.
 
-The Grafana dashboard can be accessed at http://localhost:3000.
+## Testing with AccelByte Cloud
 
-## Running with Ngrok
+To allow `gRPC client` in AccelByte Cloud to access `gRPC server` in local development environment without requiring a public IP address, we can use [ngrok](https://ngrok.com/).
 
-To allow `gRPC Client` in AccelByte Cloud to access `gRPC Server` in local development environment without requiring a public IP address, we can use [ngrok](https://ngrok.com/).
+1. Sign-in/sign-up to [ngrok](https://ngrok.com/) and et your auth token in `ngrok` dashboard.
 
-1. Sign-in/sign-up to [ngrok](https://ngrok.com/). Get your auth token in ngrok Dashboard.
+2. Run the following command to expose `gRPC server` Envoy proxy port in local development environment to the internet.
 
-2. Open `.env` file and  set `NGROK_AUTHTOKEN` with your ngrok auth token.
-
-3. You can set `NGROK_TARGET_PORT` to 10000 to use Envoy mTLS.
-
-4. Start the services with following command.
-    ```
-    docker-compose -f docker-compose-ngrok.yaml up
-    ```
-
-## Generate Certificates
-
-For mTLS, CA-signed certificate is required. To generate those certificates, run the following command.
-
-```
-make certificate
-```
-
-By default, certificates will be generated inside `compose-config/certs` directory. To generate certificates to different directory, run the following command.
-
-```
-make certificate CERT_TARGET_DIR=<path-to-directory>
-```
+   ```
+   make ngrok NGROK_AUTHTOKEN=xxxxxxxxxxx
+   ```
