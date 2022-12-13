@@ -52,4 +52,5 @@ Thumbs.db
 .env
 
 # mTLS certificates
-compose-config/certs/
+certs/*
+!certs/INFO.txt

@@ -14,16 +14,16 @@ services:
     volumes:
       - ./compose-config/envoy.yaml:/etc/envoy/envoy.yaml
       - type: bind
-        source: ./compose-config/certs/server.pem
+        source: ./certs/server.pem
         target: /home/certs/server.pem
         read_only: true
       - type: bind
-        source: ./compose-config/certs/server.key
+        source: ./certs/server.key
         target: /home/certs/server.key
         read_only: true
       - type: bind
-        source: ./compose-config/certs/rootCA.pem
-        target: /home/certs/rootCA.pem
+        source: ./certs/root_ca.pem
+        target: /home/certs/root_ca.pem
         read_only: true
     extra_hosts:
       - host.docker.internal:host-gateway
@@ -67,16 +67,16 @@ services:
     volumes:
       - ./compose-config/nginx.conf:/etc/nginx/nginx.conf
       - type: bind
-        source: ./compose-config/certs/client.pem
+        source: ./certs/client.pem
         target: /home/certs/client.pem
         read_only: true
       - type: bind
-        source: ./compose-config/certs/client.key
+        source: ./certs/client.key
         target: /home/certs/client.key
         read_only: true
       - type: bind
-        source: ./compose-config/certs/rootCA.pem
-        target: /home/certs/rootCA.pem
+        source: ./certs/root_ca.pem
+        target: /home/certs/root_ca.pem
         read_only: true
     extra_hosts:
       - host.docker.internal:host-gateway
