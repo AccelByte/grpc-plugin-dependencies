@@ -9,18 +9,19 @@ CERT_ROOT_CN="AccelByte Test Root CA"
 CERT_CA_DAYS=3650
 CERT_DAYS=365
 
-CERT_CA_KEY_FILE="rootCA.key"
-CERT_CA_PEM_FILE="rootCA.pem"
+CERT_CA_KEY_FILE="root_ca.key"
+CERT_CA_PEM_FILE="root_ca.pem"
 
 CERT_SV_KEY_FILE="server.key"
 CERT_SV_CSR_FILE="server.csr"
 CERT_SV_PEM_FILE="server.pem"
 
 CERT_CL_KEY_FILE="client.key"
+CERT_CL_KEY_PK8_FILE="client_pkcs8.key"
 CERT_CL_CSR_FILE="client.csr"
 CERT_CL_PEM_FILE="client.pem"
 
-CERT_DIR=compose-config/certs
+CERT_DIR="certs"
 if [ $# -eq 1 ]; then
     CERT_DIR=$1
 fi
@@ -66,6 +67,10 @@ openssl verify -verbose -CAfile "$CERT_DIR/$CERT_CA_PEM_FILE" "$CERT_DIR/$CERT_S
 
 echo -e -n "Create client key ... "
 openssl genrsa -out "$CERT_DIR/$CERT_CL_KEY_FILE" 2048 2> /dev/null
+echo -e "OK"
+
+echo -e -n "Convert client key to PKCS8 format ... "
+openssl pkcs8 -topk8 -nocrypt -in "$CERT_DIR/$CERT_CL_KEY_FILE" -out "$CERT_DIR/$CERT_CL_KEY_PK8_FILE"
 echo -e "OK"
 
 echo -e -n "Create client certificate ... "

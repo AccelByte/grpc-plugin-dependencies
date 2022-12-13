@@ -1,0 +1,12 @@
+Self-signed certificates required for mTLS secured gRPC for local development environment only are generated here:
+
+- client.key  
+- client.pem  
+- client_pkcs8.key  
+- root_ca.key  
+- root_ca.pem  
+- root_ca.srl 
+- server.key  
+- server.pem
+
+See README.md for more details.

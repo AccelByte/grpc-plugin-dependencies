@@ -15,7 +15,7 @@ flowchart LR
     GF[Grafana]	
     FL[Fluentd-Loki]
 	subgraph Dependency Services
-        NX ---|secure grpc\n10000| EN
+        NX ---|mTLS secured grpc\n10000| EN
         EN -.->|traces\n9411| OT
         OT -.->|traces\n4317| TM
         OT -.->|metrics\n9090| PM
@@ -35,7 +35,7 @@ flowchart LR
 
 The `gRPC server` and the `gRPC client` can actually communicate directly. However, additional services are necessary to provide **security**, **reliability**, **scalability**, and **observability**. In this architecture, we call those services as `dependency services`.
 
-This repository contains the docker compose of the `dependency dervices` for local development and testing purposes. It consists of the following services.
+This repository contains the docker compose of the `dependency services`. It consists of the following services.
 
 - nginx
 - envoy
@@ -46,7 +46,7 @@ This repository contains the docker compose of the `dependency dervices` for loc
 - opentelemetry-collector
 - fluentd-loki
 
-> :warning: **It is important to note:** the dependency services docker compose is provided as an example for local development setup only.
+> :warning: **It is important to note:** the dependency services docker compose is provided as an example for local development environment only.
 
 ## Prerequisites
 
@@ -55,16 +55,15 @@ This repository contains the docker compose of the `dependency dervices` for loc
 
 ## Setup
 
-1. Run the following command to generate self-signed certificates required for secure gRPC (mTLS).
+1. Run the following command to generate self-signed certificates required for mTLS secured gRPC for local development environment only.
 
    ```
    make certificate
    ```
 
-   You can find the generated certificates in `compose-config/certs` folder.
+   You can find the generated root CA, key, and certificate files for both `gRPC server` and `gRPC client` in `certs` folder.
 
-2. Create a docker compose `.env` file based on `.env.template` file. 
-3. Fill in the required environment variables in `.env` file.
+2. Create a docker compose `.env` file based on `.env.template` file and modify any environment variables in `.env` file if necessary.
 
 ## Running
 

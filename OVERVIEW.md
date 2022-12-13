@@ -59,7 +59,7 @@ See `plugin-arch-grpc-dependencies` repository.
 
    a. Clone `plugin-arch-grpc-dependencies` repository. 
 
-   b. Follow the `README.md` inside to setup, build, and run it. 
+   b. Follow the `README.md` inside to setup and run it. 
 
    c. Keep it running.
 
