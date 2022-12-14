@@ -7,7 +7,6 @@ flowchart LR
     CL[gRPC Client]
     SV[gRPC Server]
 	EN[Envoy]
-    NX[Nginx]
 	OT[Open Telemetry Collector]
     TM[(Tempo)]
     LK[(Loki)]
@@ -15,7 +14,7 @@ flowchart LR
     GF[Grafana]	
     FL[Fluentd-Loki]
 	subgraph Dependency Services
-        NX ---|mTLS secured grpc\n10000| EN
+
         EN -.->|traces\n9411| OT
         OT -.->|traces\n4317| TM
         OT -.->|metrics\n9090| PM
@@ -24,7 +23,7 @@ flowchart LR
         PM -.->|metrics\n9090| GF
         LK -.->|logs\n3100| GF
     end
-    CL ---|grpc\n10001| NX
+    CL ---|mTLS secured grpc\n10000| EN
     CL -.->|traces\n9411| OT
     CL -.->|logs\n3100| LK
     EN ---|grpc\n6565| SV
@@ -37,7 +36,6 @@ The `gRPC server` and the `gRPC client` can actually communicate directly. Howev
 
 This repository contains the docker compose of the `dependency services`. It consists of the following services.
 
-- nginx
 - envoy
 - grafana
 - tempo
