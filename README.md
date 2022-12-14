@@ -79,7 +79,7 @@ Grafana can be accessed at http://localhost:3000.
 
 To allow `gRPC client` in AccelByte Cloud to access `gRPC server` in local development environment without requiring a public IP address, we can use [ngrok](https://ngrok.com/).
 
-1. Sign-in/sign-up to [ngrok](https://ngrok.com/) and et your auth token in `ngrok` dashboard.
+1. Sign-in/sign-up to [ngrok](https://ngrok.com/) and get your auth token in `ngrok` dashboard.
 
 2. Run the following command to expose `gRPC server` Envoy proxy port in local development environment to the internet.
 
