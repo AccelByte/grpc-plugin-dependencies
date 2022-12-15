@@ -23,7 +23,7 @@ flowchart LR
         PM -.->|metrics\n9090| GF
         LK -.->|logs\n3100| GF
     end
-    CL ---|mTLS secured grpc\n10000| EN
+    CL ---|gRPC/gRPC mTLS\n10000| EN
     CL -.->|traces\n9411| OT
     CL -.->|logs\n3100| LK
     EN ---|grpc\n6565| SV
@@ -53,7 +53,9 @@ This repository contains the docker compose of the `dependency services`. It con
 
 ## Setup
 
-1. Run the following command to generate self-signed certificates required for mTLS secured gRPC for local development environment only.
+1. Create a docker compose `.env` file based on `.env.template` file and modify any environment variables in `.env` file if necessary.
+
+2. If you need gRPC mTLS enabled, run the following command to generate self-signed certificates required for mTLS secured gRPC for local development environment only.
 
    ```
    make certificate
@@ -61,19 +63,28 @@ This repository contains the docker compose of the `dependency services`. It con
 
    You can find the generated root CA, key, and certificate files for both `gRPC server` and `gRPC client` in `certs` folder.
 
-2. Create a docker compose `.env` file based on `.env.template` file and modify any environment variables in `.env` file if necessary.
 
 ## Running
 
 To start the services, run the following command.
 
+With gRPC mTLS enabled:
+
 ```
 docker-compose up
 ```
 
-## Accessing Grafana
+OR
 
-Grafana can be accessed at http://localhost:3000.
+With gRPC mTLS disabled:
+
+```
+docker-compose -f docker-compose-no-mtls.yaml up
+```
+
+## Observability
+
+Grafana can be accessed at http://localhost:3000 to view the metrics, traces, and logs emitted.
 
 ## Testing with AccelByte Cloud
 
