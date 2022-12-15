@@ -29,21 +29,33 @@ Sample projects for this in C#, Go, Java, and Python are available. Customers ca
 
 See the following repositories.
 
-- `plugin-arch-grpc-server-csharp`
-- `plugin-arch-grpc-server-go`
-- `plugin-arch-grpc-server-java`
-- `plugin-arch-grpc-server-python`
+- For matchmaking custom function:
+
+   - `plugin-arch-grpc-server-csharp`
+   - `plugin-arch-grpc-server-go`
+   - `plugin-arch-grpc-server-java`
+   - `plugin-arch-grpc-server-python`
+
+- For chat filter custom function:
+
+   - `chat-filter-grpc-plugin-server-go`
 
 ### gRPC Client
 
-The corresponding gRPC client to call gRPC server created by customers. It is to be implemented in AccelByte Cloud service for each feature which can be customized.  
+The corresponding gRPC client to call gRPC server created by customers. It is implemented in AccelByte Cloud service for each feature which can be customized. This sample gRPC client app project is provided to customers to help with local development and testing purposes only. 
 
 Sample projects for this in Go and Java are available. It is possible for a gRPC client in one language to communicate with gRPC server in a different language.
 
 See the following repositories.
 
-- `plugin-arch-grpc-client-go`
-- `plugin-arch-grpc-client-java`
+- For matchmaking custom function:
+
+   - `plugin-arch-grpc-client-go`
+   - `plugin-arch-grpc-client-java`
+
+- For chat filter custom function:
+
+   - `chat-filter-grpc-plugin-client-go`
 
 ### Dependency Services
 
