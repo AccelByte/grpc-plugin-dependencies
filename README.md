@@ -23,7 +23,7 @@ flowchart LR
         PM -.->|metrics\n9090| GF
         LK -.->|logs\n3100| GF
     end
-    CL ---|gRPC/gRPC mTLS\n10000| EN
+    CL ---|grpc/grpc mtls\n10000| EN
     CL -.->|traces\n9411| OT
     CL -.->|logs\n3100| LK
     EN ---|grpc\n6565| SV
