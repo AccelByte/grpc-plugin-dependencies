@@ -63,7 +63,6 @@ This repository contains the docker compose of the `dependency services`. It con
 
    You can find the generated root CA, key, and certificate files for both `gRPC server` and `gRPC client` in `certs` folder.
 
-
 ## Running
 
 To start the services, run the following command.
@@ -81,6 +80,8 @@ With gRPC mTLS disabled:
 ```
 docker-compose -f docker-compose-no-mtls.yaml up
 ```
+
+> :warning: **The `gRPC client` mTLS configuration need to be set accordingly:** if gRPC mTLS is enabled here, then the mTLS configuration in `gRPC client` also need to be enabled and vice versa.
 
 ## Observability
 
