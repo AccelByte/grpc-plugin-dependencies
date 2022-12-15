@@ -63,9 +63,11 @@ While the `gRPC server` and the `gRPC client` are able communicate directly, add
 
 See `plugin-arch-grpc-dependencies` repository.
 
-> :warning: **It is important to note:** the dependency services docker compose is provided as an example for local development setup only.
+> :warning: **It is important to note:** the dependency services docker compose is provided as an example for local development environment only.
 
 ## How to Run The Sample Projects
+
+### For Matchmaking Custom Function
 
 1. Run `dependency services` for local development and testing.
 
@@ -86,6 +88,32 @@ See `plugin-arch-grpc-dependencies` repository.
 3. Run `gRPC client`, for example `plugin-arch-grpc-client-java`
 
    a. Clone `plugin-arch-grpc-client-java` repository. 
+
+   b. Follow the `README.md` inside to setup, build, and run it.
+
+   c. Try it out! See the instruction in `README.md`.
+
+### For Chat Filter Custom Function
+
+1. Run `dependency services` for local development and testing.
+
+   a. Clone `plugin-arch-grpc-dependencies` repository. 
+
+   b. Follow the `README.md` inside to setup and run it. 
+
+   c. Keep it running.
+
+2. Run a `gRPC server`, for example `chat-filter-grpc-plugin-server-go`
+
+   a. Clone `chat-filter-grpc-plugin-server-go` repository. 
+
+   b. Follow the `README.md` inside to setup, build, and run it. 
+   
+   c. Keep it running.
+
+3. Run `gRPC client`, for example `chat-filter-grpc-plugin-client-go`
+
+   a. Clone `chat-filter-grpc-plugin-client-go` repository. 
 
    b. Follow the `README.md` inside to setup, build, and run it.
 
