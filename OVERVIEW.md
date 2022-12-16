@@ -95,6 +95,10 @@ See `plugin-arch-grpc-dependencies` repository.
 
    c. Try it out! See the instruction in `README.md`.
 
+#### Demonstration
+
+[![asciicast](https://asciinema.org/a/546011.svg)](https://asciinema.org/a/546011)
+
 ### For Chat Filter Custom Function
 
 #### Instruction
