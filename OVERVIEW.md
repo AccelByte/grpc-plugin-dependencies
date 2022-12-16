@@ -69,6 +69,8 @@ See `plugin-arch-grpc-dependencies` repository.
 
 ### For Matchmaking Custom Function
 
+#### Instruction
+
 1. Run `dependency services` for local development and testing.
 
    a. Clone `plugin-arch-grpc-dependencies` repository. 
@@ -77,7 +79,7 @@ See `plugin-arch-grpc-dependencies` repository.
 
    c. Keep it running.
 
-2. Run a `gRPC server`, for example `plugin-arch-grpc-server-java`
+2. Run a `gRPC server`, for example `plugin-arch-grpc-server-java`.
 
    a. Clone `plugin-arch-grpc-server-java` repository. 
 
@@ -85,7 +87,7 @@ See `plugin-arch-grpc-dependencies` repository.
    
    c. Keep it running.
 
-3. Run `gRPC client`, for example `plugin-arch-grpc-client-java`
+3. Run `gRPC client`, for example `plugin-arch-grpc-client-java`.
 
    a. Clone `plugin-arch-grpc-client-java` repository. 
 
@@ -95,6 +97,8 @@ See `plugin-arch-grpc-dependencies` repository.
 
 ### For Chat Filter Custom Function
 
+#### Instruction
+
 1. Run `dependency services` for local development and testing.
 
    a. Clone `plugin-arch-grpc-dependencies` repository. 
@@ -103,7 +107,7 @@ See `plugin-arch-grpc-dependencies` repository.
 
    c. Keep it running.
 
-2. Run a `gRPC server`, for example `chat-filter-grpc-plugin-server-go`
+2. Run a `gRPC server`, for example `chat-filter-grpc-plugin-server-go`.
 
    a. Clone `chat-filter-grpc-plugin-server-go` repository. 
 
@@ -111,7 +115,7 @@ See `plugin-arch-grpc-dependencies` repository.
    
    c. Keep it running.
 
-3. Run `gRPC client`, for example `chat-filter-grpc-plugin-client-go`
+3. Run `gRPC client`, for example `chat-filter-grpc-plugin-client-go`.
 
    a. Clone `chat-filter-grpc-plugin-client-go` repository. 
 
@@ -119,3 +123,6 @@ See `plugin-arch-grpc-dependencies` repository.
 
    c. Try it out! See the instruction in `README.md`.
 
+#### Demonstration
+
+[![asciicast](https://asciinema.org/a/546010.svg)](https://asciinema.org/a/546010)
