@@ -7,3 +7,8 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['node-exporter:9100']
+  - job_name: 'envoy'
+    scrape_interval: 5s
+    metrics_path: /stats/prometheus
+    static_configs:
+      - targets: ['envoy:9901']
