@@ -32,12 +32,16 @@ services:
     image: grafana/grafana:9.1.6
     volumes:
       - ./config/grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+      - ./config/grafana-dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml
+      - ./dashboards:/etc/dashboards
     environment:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - GF_AUTH_DISABLE_LOGIN_FORM=true
     ports:
       - "3000:3000"
+    depends_on:
+      - prometheus
     extra_hosts:
       - host.docker.internal:host-gateway
 
@@ -90,3 +94,6 @@ services:
       - "9411"        # zipkin
     extra_hosts:
       - host.docker.internal:host-gateway
+
+  node-exporter:
+    image: prom/node-exporter:v1.5.0
