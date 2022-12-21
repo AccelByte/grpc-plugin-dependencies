@@ -111,7 +111,7 @@
               "uid": "prometheus"
             },
             "editorMode": "builder",
-            "expr": "go_goroutines{job=\"plugin-arch-grpc-server-metrics\"}",
+            "expr": "go_goroutines{job=\"plugin-grpc-server-metrics\"}",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -203,7 +203,7 @@
               "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "increase(http_requests_total{job=\"plugin-arch-grpc-server-metrics\"}[2m])/2",
+            "expr": "increase(http_requests_total{job=\"plugin-grpc-server-metrics\"}[2m])/2",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"

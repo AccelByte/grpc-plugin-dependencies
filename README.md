@@ -1,4 +1,4 @@
-# plugin-arch-grpc-dependencies
+# grpc-plugin-dependencies
 
 > :warning: **If you are new to AccelByte Cloud Service Customization gRPC Plugin Architecture**: Start reading from [OVERVIEW.md](OVERVIEW.md) to get the full context.
 

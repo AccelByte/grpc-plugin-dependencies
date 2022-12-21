@@ -31,10 +31,10 @@ See the following repositories.
 
 - For matchmaking custom function:
 
-   - `plugin-arch-grpc-server-csharp`
-   - `plugin-arch-grpc-server-go`
-   - `plugin-arch-grpc-server-java`
-   - `plugin-arch-grpc-server-python`
+   - `matchmaking-function-grpc-plugin-server-csharp`
+   - `matchmaking-function-grpc-plugin-server-go`
+   - `matchmaking-function-grpc-plugin-server-java`
+   - `matchmaking-function-grpc-plugin-server-python`
 
 - For chat filter custom function:
 
@@ -50,8 +50,8 @@ See the following repositories.
 
 - For matchmaking custom function:
 
-   - `plugin-arch-grpc-client-go`
-   - `plugin-arch-grpc-client-java`
+   - `matchmaking-function-grpc-plugin-client-go`
+   - `matchmaking-function-grpc-plugin-client-java`
 
 - For chat filter custom function:
 
@@ -61,7 +61,7 @@ See the following repositories.
 
 While the `gRPC server` and the `gRPC client` are able communicate directly, additional services are necessary to provide **security**, **reliability**, **scalability**, and **observability**. These dependency services are packaged as a docker compose file.
 
-See `plugin-arch-grpc-dependencies` repository.
+See `grpc-plugin-dependencies` repository.
 
 > :warning: **It is important to note:** the dependency services docker compose is provided as an example for local development environment only.
 
@@ -73,23 +73,23 @@ See `plugin-arch-grpc-dependencies` repository.
 
 1. Run `dependency services` for local development and testing.
 
-   a. Clone `plugin-arch-grpc-dependencies` repository. 
+   a. Clone `grpc-plugin-dependencies` repository. 
 
    b. Follow the `README.md` inside to setup and run it. 
 
    c. Keep it running.
 
-2. Run a `gRPC server`, for example `plugin-arch-grpc-server-java`.
+2. Run a `gRPC server`, for example `matchmaking-function-grpc-plugin-server-java`.
 
-   a. Clone `plugin-arch-grpc-server-java` repository. 
+   a. Clone `matchmaking-function-grpc-plugin-server-java` repository. 
 
    b. Follow the `README.md` inside to setup, build, and run it. 
    
    c. Keep it running.
 
-3. Run `gRPC client`, for example `plugin-arch-grpc-client-java`.
+3. Run `gRPC client`, for example `matchmaking-function-grpc-plugin-client-java`.
 
-   a. Clone `plugin-arch-grpc-client-java` repository. 
+   a. Clone `matchmaking-function-grpc-plugin-client-java` repository. 
 
    b. Follow the `README.md` inside to setup, build, and run it.
 
@@ -105,7 +105,7 @@ See `plugin-arch-grpc-dependencies` repository.
 
 1. Run `dependency services` for local development and testing.
 
-   a. Clone `plugin-arch-grpc-dependencies` repository. 
+   a. Clone `grpc-plugin-dependencies` repository. 
 
    b. Follow the `README.md` inside to setup and run it. 
 
