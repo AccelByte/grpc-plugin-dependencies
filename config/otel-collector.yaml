@@ -3,7 +3,7 @@ receivers:
   prometheus:
     config:
       scrape_configs:
-        - job_name: 'plugin-arch-grpc-server-metrics'
+        - job_name: 'plugin-grpc-server-metrics'
           metrics_path: '/metrics'
           scrape_interval: 60s
           scrape_timeout: 10s
