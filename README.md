@@ -83,9 +83,11 @@ docker-compose -f docker-compose-no-mtls.yaml up
 
 > :warning: **The `gRPC client` mTLS configuration need to be set accordingly:** if gRPC mTLS is enabled here, then the mTLS configuration in `gRPC client` also need to be enabled and vice versa.
 
-## Observability
+## Administration and Observability
 
-Grafana can be accessed at http://localhost:3000 to view the metrics, traces, and logs emitted.
+1. `Grafana` can be accessed at http://localhost:3000 to view the metrics, traces, and logs emitted. Some sample dashboards are included.
+
+2. `Envoy` admin interface can be accessed at http://localhost:9901.
 
 ## Testing with AccelByte Cloud
 
