@@ -98,3 +98,5 @@ To allow `gRPC client` in AccelByte Cloud to access `gRPC server` in local devel
    ```
    make ngrok NGROK_AUTHTOKEN=xxxxxxxxxxx
    ```
+   
+3. Follow specific instruction of each AccelByte Cloud service to register your `ngrok` endpoint.
