@@ -13,14 +13,12 @@ services:
       - "9901:9901"
     volumes:
       - ./config/envoy.yaml:/etc/envoy/envoy.yaml
-      - ./certs/server.pem:/home/certs/server.pem:ro
-      - ./certs/server.key:/home/certs/server.key:ro
-      - ./certs/root_ca.pem:/home/certs/root_ca.pem:ro
+      - ./certs:/home/certs:ro       # Uses server.pem, server.key, root_ca.pem only
     extra_hosts:
       - host.docker.internal:host-gateway
 
   fluentd-loki:
-    image: grafana/fluent-plugin-loki:master    # based on 1.9 and not having the updated http plugin for json-array
+    image: grafana/fluent-plugin-loki:master    # Based on 1.9 and not having the updated http plugin for json-array
     command: ["-v"]
     volumes:
       - ./config/fluent-loki.conf:/fluentd/etc/fluent.conf
@@ -63,7 +61,7 @@ services:
     volumes:
       - ./config/otel-collector.yaml:/etc/otel-collector-config.yaml
     environment:
-      - GRAPHANA_TRACES_SAMPLING_PERCENTAGE
+      - GRAPHANA_TRACES_SAMPLING_PERCENTAGE=${GRAPHANA_TRACES_SAMPLING_PERCENTAGE:-100}
     ports:
       - "9411:9411"   # zipkin receiver
     extra_hosts:
