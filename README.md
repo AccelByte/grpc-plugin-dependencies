@@ -49,7 +49,7 @@ This repository contains the docker compose of the `dependency services`. It con
 ## Prerequisites
 
 - docker
-- docker compose
+- docker compose v2
 
 ## Setup
 
