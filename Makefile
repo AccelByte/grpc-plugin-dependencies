@@ -13,4 +13,4 @@ certificate:
 ngrok:
 	@test -n "$(NGROK_AUTHTOKEN)" || (echo "NGROK_AUTHTOKEN is not set" ; exit 1)
 	docker run --rm -it --net=host -e NGROK_AUTHTOKEN=$(NGROK_AUTHTOKEN) ngrok/ngrok:3-alpine \
-			tcp 10000	# gRPC server Envoy proxy with mTLS
+			tcp 10000	# gRPC server Envoy proxy
