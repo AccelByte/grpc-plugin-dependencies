@@ -13,12 +13,11 @@ services:
       - "9901:9901"
     volumes:
       - ./config/envoy.yaml:/etc/envoy/envoy.yaml
-      - ./certs:/home/certs:ro       # Uses server.pem, server.key, root_ca.pem only
     extra_hosts:
       - host.docker.internal:host-gateway
 
   fluentd-loki:
-    image: grafana/fluent-plugin-loki:master    # Based on 1.9 and not having the updated http plugin for json-array
+    image: grafana/fluent-plugin-loki:master    # based on 1.9 and not having the updated http plugin for json-array
     command: ["-v"]
     volumes:
       - ./config/fluent-loki.conf:/fluentd/etc/fluent.conf

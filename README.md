@@ -67,7 +67,7 @@ This repository contains the docker compose of the `dependency services`. It con
 
 To start the services, run the following command.
 
-With gRPC mTLS enabled:
+With gRPC mTLS disabled:
 
 ```
 docker-compose up
@@ -75,10 +75,10 @@ docker-compose up
 
 OR
 
-With gRPC mTLS disabled:
+With gRPC mTLS enabled:
 
 ```
-docker-compose -f docker-compose-no-mtls.yaml up
+docker-compose -f docker-compose-mtls.yaml up
 ```
 
 > :warning: **The `gRPC client` mTLS configuration need to be set accordingly:** if gRPC mTLS is enabled here, then the mTLS configuration in `gRPC client` also need to be enabled and vice versa.
@@ -89,9 +89,10 @@ docker-compose -f docker-compose-no-mtls.yaml up
 
 2. `Envoy` admin interface can be accessed at http://localhost:9901.
 
-## Testing with AccelByte Cloud
+## Exposing Local gRPC Server to AccelByte Cloud
 
-To allow `gRPC client` in AccelByte Cloud to access `gRPC server` in local development environment without requiring a public IP address, we can use [ngrok](https://ngrok.com/).
+To test `gRPC server` running in local development environment with AccelByte Cloud, it needs to be exposed to the internet.
+In order to do this without requiring a public IP address, we can use something like [ngrok](https://ngrok.com/).
 
 1. Sign-in/sign-up to [ngrok](https://ngrok.com/) and get your auth token in `ngrok` dashboard.
 
