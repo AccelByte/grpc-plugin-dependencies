@@ -64,22 +64,6 @@ static_resources:
                   - name: envoy.filters.http.router
                     typed_config:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
-          transport_socket:
-            name: envoy.transport_sockets.tls
-            typed_config:
-              "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
-              require_client_certificate: true
-              common_tls_context:
-                validation_context:
-                  trusted_ca:
-                    filename: /home/certs/root_ca.pem
-                alpn_protocols:
-                  - h2,http/1.1
-                tls_certificates:
-                  - certificate_chain:
-                      filename: /home/certs/server.pem
-                    private_key:
-                      filename: /home/certs/server.key
 
   clusters:
     - name: springboot_grpc_local
