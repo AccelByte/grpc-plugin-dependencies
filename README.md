@@ -1,6 +1,6 @@
 # grpc-plugin-dependencies
 
-> :warning: **If you are new to AccelByte Cloud Service Customization gRPC Plugin Architecture**: Start reading from [OVERVIEW.md](OVERVIEW.md) to get the full context.
+> :warning: **If you are new to AccelByte Gaming Services Customization gRPC Plugin Architecture**: Start reading from [OVERVIEW.md](OVERVIEW.md) to get the full context.
 
 ```mermaid
 flowchart LR
@@ -89,9 +89,9 @@ docker-compose -f docker-compose-mtls.yaml up
 
 2. `Envoy` admin interface can be accessed at http://localhost:9901.
 
-## Exposing Local gRPC Server to AccelByte Cloud
+## Exposing Local gRPC Server to AccelByte Gaming Services
 
-To test `gRPC server` running in local development environment with AccelByte Cloud, it needs to be exposed to the internet.
+To test `gRPC server` running in local development environment with AccelByte Gaming Services, it needs to be exposed to the internet.
 In order to do this without requiring a public IP address, we can use something like [ngrok](https://ngrok.com/).
 
 1. Sign-in/sign-up to [ngrok](https://ngrok.com/) and get your auth token in `ngrok` dashboard.
@@ -102,4 +102,4 @@ In order to do this without requiring a public IP address, we can use something 
    make ngrok NGROK_AUTHTOKEN=xxxxxxxxxxx
    ```
    
-3. Follow specific instruction of each AccelByte Cloud service to register your `ngrok` endpoint.
+3. Follow specific instruction of each AccelByte Gaming Services to register your `ngrok` endpoint.
