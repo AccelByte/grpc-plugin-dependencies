@@ -1,7 +1,5 @@
 # grpc-plugin-dependencies
 
-> :warning: **If you are new to AccelByte Gaming Services Customization gRPC Plugin Architecture**: Start reading from [OVERVIEW.md](OVERVIEW.md) to get the full context.
-
 ```mermaid
 flowchart LR
     CL[gRPC Client]
