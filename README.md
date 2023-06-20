@@ -46,8 +46,8 @@ This repository contains the docker compose of the `dependency services`. It con
 
 ## Prerequisites
 
-- docker
-- docker compose v2
+- docker v23.x
+- docker compose v2.x
 
 ## Setup
 
