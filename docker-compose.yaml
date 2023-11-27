@@ -60,7 +60,7 @@ services:
     volumes:
       - ./config/otel-collector.yaml:/etc/otel-collector-config.yaml
     environment:
-      - GRAPHANA_TRACES_SAMPLING_PERCENTAGE=${GRAPHANA_TRACES_SAMPLING_PERCENTAGE:-100}
+      - SAMPLING_PERCENTAGE=${SAMPLING_PERCENTAGE:-100}
     ports:
       - "9411:9411"   # zipkin receiver
     extra_hosts:
