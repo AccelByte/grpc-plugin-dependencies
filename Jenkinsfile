@@ -15,12 +15,11 @@ bitbucketPayload = null
 bitbucketCommitHref = null
 
 pipeline {
-  agent none
+  agent {
+    label "extend-builder-ci"
+  }
   stages {
     stage('Prepare') {
-      agent {
-        label "master"
-      }
       steps {
         script {
           if (env.BITBUCKET_PAYLOAD) {
@@ -36,9 +35,6 @@ pipeline {
       }
     }
     stage('Lint') {
-      agent {
-        label "justice-codegen-sdk"
-      }
       stages {
         stage('Lint Commits') {
           when {
@@ -48,12 +44,13 @@ pipeline {
           }
           agent {
             docker {
-              image 'randondigital/commitlint:3.0'
+              image 'commitlint/commitlint:19.3.1'
+              args '--entrypoint='
               reuseNode true
             }
           }
           steps {
-            sh "npm install @commitlint/config-conventional@13.2.0"
+            sh "git config --add safe.directory '*'"
             sh "commitlint --color false --verbose --from ${env.BITBUCKET_PULL_REQUEST_LATEST_COMMIT_FROM_TARGET_BRANCH}"
           }
         }
