@@ -86,18 +86,3 @@ docker-compose -f docker-compose-mtls.yaml up
 1. `Grafana` can be accessed at http://localhost:3000 to view the metrics, traces, and logs emitted. Some sample dashboards are included.
 
 2. `Envoy` admin interface can be accessed at http://localhost:9901.
-
-## Exposing Local gRPC Server to AccelByte Gaming Services
-
-To test `gRPC server` running in local development environment with AccelByte Gaming Services, it needs to be exposed to the internet.
-In order to do this without requiring a public IP address, we can use something like [ngrok](https://ngrok.com/).
-
-1. Sign-in/sign-up to [ngrok](https://ngrok.com/) and get your auth token in `ngrok` dashboard.
-
-2. Run the following command to expose `gRPC server` Envoy proxy port in local development environment to the internet.
-
-   ```
-   make ngrok NGROK_AUTHTOKEN=xxxxxxxxxxx
-   ```
-   
-3. Follow specific instruction of each AccelByte Gaming Services to register your `ngrok` endpoint.
