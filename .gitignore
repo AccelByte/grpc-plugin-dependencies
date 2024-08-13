@@ -50,7 +50,3 @@ Thumbs.db
 
 # Docker Compose .env file
 .env
-
-# mTLS certificates
-certs/*
-!certs/INFO.txt

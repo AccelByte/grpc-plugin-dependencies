@@ -51,35 +51,15 @@ This repository contains the docker compose of the `dependency services`. It con
 
 ## Setup
 
-1. Create a docker compose `.env` file based on `.env.template` file. Modify any environment variables in the `.env` file if necessary.
-
-2. To run the services with gRPC mTLS enabled, run the following command to generate self-signed certificates required for mTLS secured gRPC for local development environment only.
-
-   ```
-   make certificate
-   ```
-
-   You can find the generated root CA, key, and certificate files for both `gRPC server` and `gRPC client` in `certs` folder.
+Create a docker compose `.env` file based on `.env.template` file. Modify any environment variables in the `.env` file if necessary.
 
 ## Running
 
 To run the services, run the following command.
 
-With gRPC mTLS disabled:
-
 ```
 docker-compose up
 ```
-
-OR
-
-With gRPC mTLS enabled:
-
-```
-docker-compose -f docker-compose-mtls.yaml up
-```
-
-> :warning: **The `gRPC client` mTLS configuration need to be set accordingly:** if gRPC mTLS is enabled here, then the mTLS configuration in `gRPC client` also need to be enabled and vice versa.
 
 ## Administration and Observability
 
