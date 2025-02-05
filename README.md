@@ -114,7 +114,7 @@ c. Docker (Docker Desktop 4.30+/Docker Engine v23.0+)
 
 d. [ngrok](https://ngrok.com/)
 
-    - Follow [ngrok's installation guide](https://ngrok.com/download).
+    - Follow [ngrok's installation guide](https://ngrok.com/downloads).
 
 ## Setup
 
